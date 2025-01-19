@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contact_nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/addContactsFragment"
+        android:name="com.example.guardiansafetyapp.features.AddContactsFragment"
+        android:label="fragment_add_contacts"
+        tools:layout="@layout/fragment_add_contacts" >
+        <action
+            android:id="@+id/action_addContactsFragment_to_addedContactFragment"
+            app:destination="@id/addedContactFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.guardiansafetyapp.features.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_addedContactFragment"
+            app:destination="@id/addedContactFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_emergencySMSFragment"
+            app:destination="@id/emergencySMSFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_trackMeFragment"
+            app:destination="@id/trackMeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addedContactFragment"
+        android:name="com.example.guardiansafetyapp.features.AddedContactFragment"
+        android:label="fragment_added_contact"
+        tools:layout="@layout/fragment_added_contact" >
+        <action
+            android:id="@+id/action_addedContactFragment_to_addContactsFragment"
+            app:destination="@id/addContactsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/emergencySMSFragment"
+        android:name="com.example.guardiansafetyapp.features.EmergencySMSFragment"
+        android:label="fragment_emergency_s_m_s"
+        tools:layout="@layout/fragment_emergency_s_m_s" />
+    <fragment
+        android:id="@+id/trackMeFragment"
+        android:name="com.example.guardiansafetyapp.features.TrackMeFragment"
+        android:label="fragment_track_me"
+        tools:layout="@layout/fragment_track_me" />
+</navigation>

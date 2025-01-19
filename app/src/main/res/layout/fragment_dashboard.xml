@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".features.DashboardFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/pink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shapegrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/undraw_female_avatar_7t6k"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/poppingregular"
+            android:text="Welcome Olivia!"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@drawable/bgwhite"
+            android:orientation="vertical" >
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <LinearLayout
+                    android:id="@+id/sosBtn"
+                    android:layout_width="150dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_height="150dp">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/sosbtn"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SOS"
+                        android:fontFamily="@font/poppingregular"
+                        android:textStyle="bold"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/smsBtn"
+                    android:layout_weight="0.5"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_height="150dp">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/emergency_call_svgrepo_com"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Emergency\nSMS"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppingregular"
+                        android:textStyle="bold"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <LinearLayout
+                android:id="@+id/micBtn"
+                android:layout_width="150dp"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="150dp">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/mic"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Record Audio"
+                    android:fontFamily="@font/poppingregular"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/trackBtn"
+                android:layout_weight="0.5"
+                android:layout_width="150dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="150dp">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/track"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Track Me"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppingregular"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <LinearLayout
+                    android:id="@+id/supportBtn"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:layout_height="150dp">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/bot"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ShieldMate Bot"
+                        android:fontFamily="@font/poppingregular"
+                        android:textStyle="bold"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/updtContactsBtn"
+                    android:layout_width="150dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_height="150dp">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/contacts_svgrepo_com"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Update\nContacts"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppingregular"
+                        android:textStyle="bold"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_translucent"
+        android:visibility="gone"
+        android:id="@+id/translView"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+

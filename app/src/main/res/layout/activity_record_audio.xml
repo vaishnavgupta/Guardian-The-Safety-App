@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.RecordAudio">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00.00"
+            android:textSize="56sp"
+            android:fontFamily="@font/poppingregular"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="80dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageButton
+                android:id="@+id/deleteBtn"
+                android:src="@drawable/ic_delete_disabled"
+                android:background="@drawable/ripple_audio_disable"
+                android:layout_width="56dp"
+                android:layout_height="56dp"/>
+            <ImageButton
+                android:id="@+id/recordBtn"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/ripple_audio"
+                android:layout_width="66dp"
+                android:layout_height="66dp"/>
+            <ImageButton
+                android:id="@+id/ListBtn"
+                android:src="@drawable/list_ul_alt_svgrepo_com"
+                android:background="@drawable/ripple_audio_disable"
+                android:layout_width="56dp"
+                android:layout_height="56dp"/>
+            <ImageButton
+                android:id="@+id/doneBtn"
+                android:visibility="gone"
+                android:src="@drawable/tick_svgrepo_com"
+                android:background="@drawable/ripple_audio_disable"
+                android:layout_width="56dp"
+                android:layout_height="56dp"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+    <View
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/bottomSheetBg"
+        android:background="@color/opaque"/>
+
+    <include layout="@layout/audio_bottom_sheet"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
