@@ -10,6 +10,7 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.telephony.SmsManager
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -80,7 +81,6 @@ class DashboardFragment : Fragment() {
         fusedLocationClient= LocationServices.getFusedLocationProviderClient(requireActivity())
         getCurrentLocationOfUser()
 
-
         Kommunicate.init(requireContext(),"2d094d1e1a1efdd78d19827894ea3e40a")
         updtContact=view.findViewById(R.id.updtContactsBtn)
         updtContact.setOnClickListener {
@@ -107,6 +107,11 @@ class DashboardFragment : Fragment() {
             if(ContextCompat.checkSelfPermission(requireContext(),Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(requireContext(),
                     Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION),accessLocationCode)
+                return@setOnClickListener
+            }
+            if (ContextCompat.checkSelfPermission(requireContext(),Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.SEND_SMS),SMS_PERMISSION_CODE)
+                return@setOnClickListener
             }
             val builder=AlertDialog.Builder(requireContext())
             builder.setMessage("Are you sure you want to send SOS?")
@@ -189,23 +194,25 @@ class DashboardFragment : Fragment() {
             }
             progressDialog.updateMsg("Location fetched successfully!")
             address = withContext(Dispatchers.IO) {
-                if(latitude==0.0000 && longitude==0.0000) return@withContext "No Address Found"
                 getAddressFromLatLng(latitude, longitude)
             }
             progressDialog.updateMsg("Getting address from location...")
             Toast.makeText(context, "Address: $address", Toast.LENGTH_SHORT).show()
-            if (address!="No Address Found") {
-                progressDialog.updateMsg("SMS sent successfully!")
-                delay(2000)
-                val finalAddress = "SOS Alert!\n$userName is in danger! Need help! \nCurrent Location: $address\n\nSent via Guardian - The Safety App"
+            if (address!="No Address Found" && contactsList.isNotEmpty()) {
+                val finalAddress = "SOS Alert!\n$userName is in danger! Need help! \nCurrent Location: $address\nLocation Link: https://maps.google.com/?q=$latitude,$longitude\nSent via Guardian - The Safety App"
                 Log.d("add","$finalAddress")
+                val smsManager=SmsManager.getDefault()
+                val parts=smsManager.divideMessage(finalAddress)
                 for (contact in contactsList){
                     val phoneNum="+91${contact.friendPhone}"
-                    SMSUtils.sendSMS(requireContext(),phoneNum,finalAddress)
+                    smsManager.sendMultipartTextMessage(phoneNum,null,parts,null,null)
+                    Log.d("SOS_Sms","SMS sent to ${contact.friendName}")
                 }
             }
-            progressDialog.updateMsg("Opening Audio Recorder...")
+            progressDialog.updateMsg("SMS sent successfully!")
             delay(2000)
+            progressDialog.updateMsg("Opening Audio Recorder...")
+            delay(1000)
             progressDialog.dismiss()
             bgProgress.visibility = View.GONE
             val intent = Intent(activity, RecordAudio::class.java)
@@ -214,28 +221,6 @@ class DashboardFragment : Fragment() {
 
     }
 
-     fun sendEmergencySMS(context: Context, finalAddress: String) {
-        //checking permissions again
-        if(ContextCompat.checkSelfPermission(requireContext(),Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.SEND_SMS),SMS_PERMISSION_CODE)
-        }
-        if(contactsList.isEmpty()){
-            Toast.makeText(requireContext(), "No Contacts Added!", Toast.LENGTH_SHORT).show()
-            return
-        }
-        for(contact in contactsList){
-            val phoneNum="+91${contact.friendPhone}"
-            lifecycleScope.launch(Dispatchers.Main) {
-                try {
-                    SMSUtils.sendSMS(context, phoneNum, finalAddress)
-                    Toast.makeText(context, "SMS sent to $phoneNum!", Toast.LENGTH_SHORT).show()
-                } catch (e: Exception) {
-                    Log.e("SMS", "Failed to send SMS: ${e.message}")
-                    Toast.makeText(context, "Failed to send SMS: ${e.message}", Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-    }
 
     fun openChatBot(context:Context){
         Kommunicate.loginAsVisitor(context, object : KMLoginHandler {

@@ -5,6 +5,8 @@ import android.content.pm.PackageManager
 import android.graphics.Canvas
 import android.location.Geocoder
 import android.os.Bundle
+import android.telephony.SmsManager
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -199,9 +201,12 @@ class TrackMeFragment : Fragment(),OnMapReadyCallback {
                 Toast.makeText(requireContext(), "No Contacts Added!", Toast.LENGTH_SHORT).show()
                 return
             }
+            val smsManager= SmsManager.getDefault()
+            val parts=smsManager.divideMessage(finalMsg)
             for(contact in list){
                 val phoneNum="+91${contact.friendPhone}"
-                SMSUtils.sendSMS(requireContext(),phoneNum,finalMsg)
+                smsManager.sendMultipartTextMessage(phoneNum,null,parts,null,null)
+                Log.d("EmergencySms","SMS sent to ${contact.friendName}")
             }
             Toast.makeText(requireContext(), "All messages sent successfully!", Toast.LENGTH_SHORT).show()
         }
