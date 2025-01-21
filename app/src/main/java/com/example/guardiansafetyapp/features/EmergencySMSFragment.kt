@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -17,6 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.guardiansafetyapp.R
 import com.example.guardiansafetyapp.models.ContactNew
 import com.example.guardiansafetyapp.sms.SMSUtils
@@ -78,6 +80,9 @@ class EmergencySMSFragment : Fragment() {
             Toast.makeText(requireContext(), "All messages sent successfully!", Toast.LENGTH_SHORT).show()
         }
 
+        view.findViewById<ImageView>(R.id.backtohome).setOnClickListener {
+            view.findNavController().navigate(R.id.action_emergencySMSFragment_to_dashboardFragment)
+        }
 
         return view
     }

@@ -4,6 +4,7 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="rippleColor">@color/graydarkdisabled</item>
+        <item name="android:selectableItemBackground">@color/graydarkdisabled</item>
     </style>
 
     <style name="Theme.GuardianSafetyApp" parent="Base.Theme.GuardianSafetyApp" />

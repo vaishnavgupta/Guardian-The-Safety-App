@@ -10,6 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+        <ImageView
+            android:id="@+id/imageView53"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shape"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvTimer"
@@ -19,11 +26,23 @@
             android:textSize="56sp"
             android:fontFamily="@font/poppingregular"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/imageView53" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottiemicAnim"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTimer"
+            app:lottie_autoPlay="false"
+            app:layout_constraintBottom_toTopOf="@+id/lllayout"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/lottiemic" />
         <LinearLayout
+            android:id="@+id/lllayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -58,6 +77,20 @@
                 android:layout_width="56dp"
                 android:layout_height="56dp"/>
         </LinearLayout>
+        <ImageView
+            android:id="@+id/backtohome"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:padding="4dp"
+            android:hapticFeedbackEnabled="true"
+            android:clickable="true"
+            android:foregroundGravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/card_back_btn"
+            app:srcCompat="@drawable/back_icon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     

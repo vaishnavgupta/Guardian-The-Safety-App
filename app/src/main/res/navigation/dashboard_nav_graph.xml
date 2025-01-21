@@ -37,15 +37,26 @@
         <action
             android:id="@+id/action_addedContactFragment_to_addContactsFragment"
             app:destination="@id/addContactsFragment" />
+        <action
+            android:id="@+id/action_addedContactFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/emergencySMSFragment"
         android:name="com.example.guardiansafetyapp.features.EmergencySMSFragment"
         android:label="fragment_emergency_s_m_s"
-        tools:layout="@layout/fragment_emergency_s_m_s" />
+        tools:layout="@layout/fragment_emergency_s_m_s" >
+        <action
+            android:id="@+id/action_emergencySMSFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/trackMeFragment"
         android:name="com.example.guardiansafetyapp.features.TrackMeFragment"
         android:label="fragment_track_me"
-        tools:layout="@layout/fragment_track_me" />
+        tools:layout="@layout/fragment_track_me" >
+        <action
+            android:id="@+id/action_trackMeFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
 </navigation>

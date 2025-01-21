@@ -3,4 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="smsBoilerPlate">Sent via Guardian - The Safety App</string>
+    <string name="record_nenergency_audio">Record \nEnergency Audio</string>
+    <string name="guardian_gives_you_the_nability_to_record_your_voice_recording_nand_send_it_seamlessly_to_your_nloved_one_s_in_case_of_emergency">Guardian gives you the\nability to record your Voice Recording\nand send it seamlessly to your\nloved one\'s in case of Emergency.</string>
+    <string name="s2">Guardian allows you to\nshare your current location\nto your emergency contacts\nthrough text SMS\njust by clicking a button.</string>
+    <string name="s5">Guardian gives you the power\nalert your loved one\'s\nby sending your current\nlocation and audio recording\nwhenever you feel unsafe.</string>
 </resources>

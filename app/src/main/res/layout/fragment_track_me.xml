@@ -16,7 +16,7 @@
         android:elevation="16dp"
         android:fontFamily="@font/poppingregular"
         android:hint="Your current location"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="70dp"
         android:singleLine="true"
         android:ellipsize="end"
         android:scrollHorizontally="true"
@@ -30,12 +30,13 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="490dp"
+        android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textView11"
         app:layout_constraintTop_toBottomOf="@id/eTCurrentLoc">
 
         <androidx.fragment.app.FragmentContainerView
@@ -53,10 +54,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/bgwhite"
         android:drawableStart="@drawable/liveicon"
         android:drawablePadding="4dp"
         android:elevation="4dp"
+        app:layout_constraintBottom_toTopOf="@id/shareCurrLocBtn"
         android:fontFamily="@font/poppingregular"
         android:padding="4dp"
         android:text="Live"
@@ -68,20 +71,37 @@
         android:id="@+id/shareCurrLocBtn"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginHorizontal="16dp"
+
         android:background="@drawable/redbg"
+        android:clickable="true"
+        android:elevation="24dp"
         android:fontFamily="@font/poppingregular"
         android:gravity="center"
-        android:layout_marginHorizontal="16dp"
-        android:textSize="24sp"
-        android:layout_marginTop="16dp"
-        android:elevation="24dp"
-        android:textColor="@color/black"
+        android:hapticFeedbackEnabled="true"
         android:text="Share Current Location"
+        android:textColor="@color/black"
+        android:layout_marginBottom="32dp"
+        android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-
+    <ImageView
+        android:id="@+id/backtohome"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:padding="4dp"
+        android:hapticFeedbackEnabled="true"
+        android:clickable="true"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/card_back_btn"
+        app:srcCompat="@drawable/back_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

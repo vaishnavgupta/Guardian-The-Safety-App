@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -57,7 +58,9 @@ class AddContactsFragment : Fragment() {
             addContactBtn.visibility=View.GONE
         }
 
-
+        view.findViewById<ImageView>(R.id.backtohome).setOnClickListener {
+            view.findNavController().navigate(R.id.action_addContactsFragment_to_addedContactFragment)
+        }
 
         return view
     }

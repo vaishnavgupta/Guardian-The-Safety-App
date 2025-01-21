@@ -11,6 +11,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -19,6 +20,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.airbnb.lottie.LottieAnimationView
+import com.example.guardiansafetyapp.HomeActivity
 import com.example.guardiansafetyapp.R
 import com.example.guardiansafetyapp.viewmodel.GuardianAppViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -51,6 +54,7 @@ class RecordAudio : AppCompatActivity(),AudioTimer.onTimerTickListener {
     private lateinit var btmFileNameInp:TextInputEditText
     private lateinit var cnclBtn:MaterialButton
     private lateinit var shrBtn:MaterialButton
+    private lateinit var lottieMic:LottieAnimationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,10 +77,15 @@ class RecordAudio : AppCompatActivity(),AudioTimer.onTimerTickListener {
         listBtn=findViewById(R.id.ListBtn)
         doneBtn=findViewById(R.id.doneBtn)
         vibrator= getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        lottieMic=findViewById(R.id.lottiemicAnim)
 
 
         bottomSheetBehaviour.peekHeight=0
         bottomSheetBehaviour.state=BottomSheetBehavior.STATE_COLLAPSED
+
+        findViewById<ImageView>(R.id.backtohome).setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
 
         recBtn.setOnClickListener {
             when{
@@ -166,6 +175,7 @@ class RecordAudio : AppCompatActivity(),AudioTimer.onTimerTickListener {
         recorder.pause()
         recBtn.setImageResource(R.drawable.ripple_audio)
         timer.pauseTimer()
+        lottieMic.pauseAnimation()
     }
 
     private fun resumeRecording(){
@@ -173,6 +183,7 @@ class RecordAudio : AppCompatActivity(),AudioTimer.onTimerTickListener {
         recorder.resume()
         recBtn.setImageResource(R.drawable.round_pause_24)
         timer.startTimer()
+        lottieMic.resumeAnimation()
     }
 
     private fun startRecording(){
@@ -181,6 +192,8 @@ class RecordAudio : AppCompatActivity(),AudioTimer.onTimerTickListener {
                 auddioReqCode)
             return
         }
+        //starting animation
+        lottieMic.playAnimation()
         //setting recorder
         recorder=MediaRecorder()
         dirName="${externalCacheDir?.absolutePath}/"
@@ -211,6 +224,7 @@ class RecordAudio : AppCompatActivity(),AudioTimer.onTimerTickListener {
     }
 
     private fun stopRecording(){
+        lottieMic.cancelAnimation()
         timer.stopTimer()
         recorder.apply {
             stop()

@@ -19,7 +19,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/poppingregular"
         android:text="Emergency SMS"
         android:textColor="@color/black"
@@ -69,6 +69,9 @@
         android:fontFamily="@font/poppingregular"
         android:gravity="center"
         android:text="Send SMS"
+        android:hapticFeedbackEnabled="true"
+        android:clickable="true"
+        android:focusable="true"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/msgEditText"
@@ -76,6 +79,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
          />
+
+    <ImageView
+        android:id="@+id/backtohome"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:padding="4dp"
+        android:hapticFeedbackEnabled="true"
+        android:clickable="true"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/card_back_btn"
+        app:srcCompat="@drawable/back_icon" />
 
 
 

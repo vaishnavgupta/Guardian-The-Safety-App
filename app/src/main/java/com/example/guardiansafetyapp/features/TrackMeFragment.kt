@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -19,6 +20,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.guardiansafetyapp.R
 import com.example.guardiansafetyapp.models.ContactNew
 import com.example.guardiansafetyapp.sms.SMSUtils
@@ -73,6 +75,9 @@ class TrackMeFragment : Fragment(),OnMapReadyCallback {
         viewModel.phNum.observe(viewLifecycleOwner, Observer {
             phoneNum=it
         })
+        view.findViewById<ImageView>(R.id.backtohome).setOnClickListener {
+            view.findNavController().navigate(R.id.action_trackMeFragment_to_dashboardFragment)
+        }
         currAddEt=view.findViewById(R.id.eTCurrentLoc)
         shareLocBtn=view.findViewById(R.id.shareCurrLocBtn)
         fusedLocationClient=LocationServices.getFusedLocationProviderClient(requireActivity())

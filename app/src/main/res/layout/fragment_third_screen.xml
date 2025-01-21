@@ -20,8 +20,9 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:text="Title"
+        android:text="@string/record_nenergency_audio"
         android:layout_marginTop="16dp"
         android:textSize="24sp"
         android:fontFamily="@font/poppingregular"
@@ -34,8 +35,11 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description"
+        android:text="@string/guardian_gives_you_the_nability_to_record_your_voice_recording_nand_send_it_seamlessly_to_your_nloved_one_s_in_case_of_emergency"
         android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppingregular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />

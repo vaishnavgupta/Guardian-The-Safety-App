@@ -105,14 +105,14 @@
             android:fontFamily="@font/poppingregular"
             android:gravity="center"
             android:text="Register"
+            android:clickable="true"
+            android:focusable="true"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkBox" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

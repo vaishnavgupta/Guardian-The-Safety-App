@@ -101,6 +101,8 @@
         android:fontFamily="@font/poppingregular"
         android:gravity="center"
         android:text="Sign In"
+        android:clickable="true"
+        android:focusable="true"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -131,6 +133,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppingregular"
             android:text="Sign Up"
+            android:clickable="true"
+            android:focusable="true"
             android:textColor="@color/pink"
             android:textSize="14sp"
             android:textStyle="bold" />

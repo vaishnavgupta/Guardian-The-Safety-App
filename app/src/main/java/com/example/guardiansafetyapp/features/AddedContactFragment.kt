@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -51,6 +52,9 @@ class AddedContactFragment : Fragment() {
                 contactsRV.adapter=contactsRVAdapter
             }
         })
+        view.findViewById<ImageView>(R.id.backtohome).setOnClickListener {
+            view.findNavController().navigate(R.id.action_addedContactFragment_to_dashboardFragment)
+        }
 
         return view
     }

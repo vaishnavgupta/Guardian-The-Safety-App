@@ -13,6 +13,7 @@ import android.widget.DatePicker
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.findNavController
+import com.example.guardiansafetyapp.LottieProgressDialog
 import com.example.guardiansafetyapp.R
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
@@ -33,7 +34,7 @@ class RegisterDetailFragment : Fragment() {
     private lateinit var dateInpText:TextInputEditText
     private lateinit var phoneInput:TextInputEditText
     private lateinit var chkBox:CheckBox
-    private lateinit var progDialSignIn: ProgressDialog
+    private lateinit var progDialSignIn: LottieProgressDialog
     private lateinit var firestore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
 
@@ -54,7 +55,7 @@ class RegisterDetailFragment : Fragment() {
         dateInpText=view.findViewById(R.id.inputDOB)
         phoneInput=view.findViewById(R.id.inputPhoneNum)
         chkBox=view.findViewById(R.id.checkBox)
-        progDialSignIn=ProgressDialog(requireContext())
+        progDialSignIn=LottieProgressDialog(requireContext())
 
         //calender dialog
         dateInpText.setOnClickListener {
@@ -96,7 +97,7 @@ class RegisterDetailFragment : Fragment() {
 
     private fun registerUser(n: String?, e: String?, p: String?, phone: String, dob: String) {
         progDialSignIn.show()
-        progDialSignIn.setMessage("Creating your Profile\nPlease Wait...")
+        progDialSignIn.updateMsg("Creating your Profile\nPlease Wait...")
 
         if (e != null && p != null) {
             auth.createUserWithEmailAndPassword(e,p).addOnCompleteListener {

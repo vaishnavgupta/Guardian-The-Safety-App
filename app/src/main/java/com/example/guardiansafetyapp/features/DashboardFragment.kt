@@ -2,14 +2,11 @@ package com.example.guardiansafetyapp.features
 
 import android.Manifest
 import android.app.AlertDialog
-import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.telephony.SmsManager
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -24,12 +21,14 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.applozic.mobicomkit.api.account.register.RegistrationResponse
+import com.example.guardiansafetyapp.CustomDialogNoCt
 import com.example.guardiansafetyapp.LottieProgressDialog
 import com.example.guardiansafetyapp.R
 import com.example.guardiansafetyapp.models.ContactNew
-import com.example.guardiansafetyapp.sms.SMSUtils
 import com.example.guardiansafetyapp.viewmodel.GuardianAppViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -54,6 +53,7 @@ class DashboardFragment : Fragment() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var latitude=0.0000
     private var longitude=0.0000
+    private lateinit var navCtrl:NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,6 +64,7 @@ class DashboardFragment : Fragment() {
 
         bgProgress=view.findViewById(R.id.translView)
         requestLocationSMSPermission()
+        navCtrl=findNavController()
         viewModel= ViewModelProvider(this).get(GuardianAppViewModel::class.java)
         viewModel.nme.observe(viewLifecycleOwner, Observer {
             userName=it
@@ -71,7 +72,9 @@ class DashboardFragment : Fragment() {
         })
         viewModel.getAddContacts().observe(viewLifecycleOwner, Observer {
             if(it.isEmpty()){
-                Toast.makeText(requireContext(), "No Contacts Added!", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "No Contacts Added!", Toast.LENGTH_SHORT).show()
+                val custdg=CustomDialogNoCt(navCtrl,requireContext())
+                custdg.show()
             }
             else{
                 contactsList=it
@@ -129,6 +132,16 @@ class DashboardFragment : Fragment() {
 
 
         return view
+    }
+
+    private fun showDialogNCt(
+        it: List<ContactNew>?,
+        requireContext: Context,
+        navCtrl: NavController
+    ) {
+        if(it==null){
+            CustomDialogNoCt(navCtrl,requireContext).show()
+        }
     }
 
     private fun getCurrentLocationOfUser() {
