@@ -1,0 +1,17 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow layer for elevation -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#D3D3D3" /> <!-- Light gray shadow -->
+            <corners android:radius="16dp" /> <!-- Rounded corners for shadow -->
+        </shape>
+    </item>
+
+    <!-- Foreground layer for the white rounded rectangle -->
+    <item android:top="4dp" android:left="4dp" android:right="4dp" android:bottom="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" /> <!-- White color -->
+            <corners android:radius="16dp" /> <!-- Rounded corners -->
+        </shape>
+    </item>
+</layer-list>
