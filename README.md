@@ -51,9 +51,13 @@ Guardian is an Android app designed to ensure women’s safety by providing feat
 
 - Open the project in Android Studio.
 
+- Add Firebase ***google-services.json*** file of your Firebase project.
+
 - Sync dependencies.
 
 - Build and run the app on an Android device/emulator.
+
+- ***In case of any bugs and errors do contact me.***
     
 ## Contributors
 
